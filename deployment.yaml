@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stocksba-front
+  namespace: stocksba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stocksba-front
+  template:
+    metadata:
+      labels:
+        app: stocksba-front
+    spec:
+      containers:
+        - name: stocksba-front
+          image: registry.cn-shanghai.aliyuncs.com/yuanbing/stocksba-front:{version}
+          ports:
+            - name: http-port
+              containerPort: 8080
+      imagePullSecrets:
+        - name: stocksba
