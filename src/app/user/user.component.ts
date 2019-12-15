@@ -16,32 +16,4 @@ export class UserComponent implements OnInit {
   ngOnInit() {
   }
 
-  // usertabClick(tab) {
-  //   if (tab.index === 1) {
-  //     this.getCompany();
-  //   }
-  // }
-
-  
-
-  // getSector() {
-
-  //   this.companyservice.findSectors().subscribe(data => {
-
-  //     // tslint:disable-next-line:no-string-literal
-  //     if (data['code'] === 200) {
-  //       // tslint:disable-next-line:no-string-literal
-  //       this.sectors = data['data'];
-  //       // tslint:disable-next-line:no-string-literal
-  //     } else if (data['code'] === 404) {
-  //       // tslint:disable-next-line:no-string-literal
-  //       this.alertService.warn(data['message']);
-  //     }
-
-  //   },
-  //     error => {
-  //       this.alertService.error(error);
-  //     });
-  // }
-
 }

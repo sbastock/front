@@ -1,10 +1,11 @@
-.chart-condition-card {
-    min-width: 600px;
-    display: inline-block;
-  }
+.compare-card {
+  width: 100%;
+  height: 400px;
+  margin: 15px;
+}
 
-.cardrow{
-  display: inline-block;
+.compare-card-content {
+  height: 350px;
 }
 
 .chart-container {
@@ -15,4 +16,14 @@
     display: flex;
     flex-direction: column;
     overflow: visible;
+  }
+
+.label {
+    color: blueviolet;
+    margin-right: 10px;
+  }
+
+.text-inside-grid {
+    position: absolute;
+    left: 5px;
   }

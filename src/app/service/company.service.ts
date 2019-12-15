@@ -33,6 +33,10 @@ export class CompanyService {
     return this.http.get(`${environment.gatewayurl}/company/api/v1/exchange/list`);
   }
 
+  findExchangeCompany(exchangeid: number) {
+    return this.http.get(`${environment.gatewayurl}/company/api/v1/exchange/query?exchangeid=${exchangeid}`);
+  }
+
   addExchange(exchange: NewExchange) {
     return this.http.post(`${environment.gatewayurl}/company/api/v1/exchange/add`, exchange);
   }

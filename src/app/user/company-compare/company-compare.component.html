@@ -1,60 +1,104 @@
-<div class="mat-small">
-        <mat-card class="chart-condition-card">
-            <mat-grid-list cols="3" rowHeight="3:1">
-                <mat-grid-tile>Select Stock Exchange</mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-label>Stock Exchange</mat-label>
-                        <mat-select>
-                            <mat-option value="BSE">BSE</mat-option>
-                            <mat-option value="NSE">NSE</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile></mat-grid-tile>
-                <mat-grid-tile>Company Name</mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <mat-label>Company Name</mat-label>
-                        <mat-select>
-                            <mat-option *ngFor="let company of companies" [value]="company.id">
-                                {{company.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <button mat-raised-button color="primary">
-                        <mat-icon aria-hidden="false" aria-label="add_icon" >add</mat-icon>
-    
-                    </button>
-                </mat-grid-tile>
-                <mat-grid-tile>Period</mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <input matInput [matDatepicker]="picker1" placeholder="From" [formControl]="date">
-                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                        <mat-datepicker #picker1></mat-datepicker>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field>
-                        <input matInput [matDatepicker]="picker2" placeholder="To" [formControl]="date">
-                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>Specify Periodicity</mat-grid-tile>
-                <mat-grid-tile colspan=2>
-                    <button mat-button>Week</button>
-                    <button mat-button>Month</button>
-                    <button mat-button>Quarter</button>
-                    <button mat-button>Year</button>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <button mat-raised-button color="primary" (click)="generate_Map()">Generate Map</button>
-                </mat-grid-tile>
+<div class="main">
+  <mat-grid-list cols="5" rowHeight="450px">
+    <mat-grid-tile colspan=2 rowspan=1>
+        <mat-card [formGroup]="form" class="compare-card">
+          <mat-card-content class="compare-card-content">
+            <mat-grid-list cols="2" rows="3" rowHeight="30px">
+              <mat-grid-tile colspan=1 rowspan=1>
+                <div class="text-inside-grid">
+                  <span class="label">Selcec Stock Exchange:</span>
+                  </div>
+              </mat-grid-tile>
+              <mat-grid-tile colspan=1 rowspan=1>
+                <div class="text-inside-grid">
+                <mat-form-field style="width: 205px;">
+                  <mat-label>Select Exchange</mat-label>
+                  <mat-select (selectionChange)="selectExchangeClick($event)">
+                    <mat-option *ngFor="let exchange of exchanges" [value]="exchange.id">
+                      {{exchange.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </mat-grid-tile>
+            <mat-grid-tile colspan=1 rowspan=1>
+              <div class="text-inside-grid">
+                <span class="label">Selcec Compare Company One:</span>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile colspan=1 rowspan=1>
+              <div class="text-inside-grid">
+                <mat-form-field style="width: 205px;">
+                  <mat-label>Select Company</mat-label>
+                  <mat-select formControlName="comapnycodeA">
+                    <mat-option *ngFor="let excompanyA of excompanies" [value]="excompanyA.code">
+                      {{excompanyA.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile colspan=1 rowspan=1>
+            <div class="text-inside-grid">
+              <span class="label">Selcec Compare Company Two:</span>
+              </div>
+          </mat-grid-tile>
+          <mat-grid-tile colspan=1 rowspan=1>
+            <div class="text-inside-grid">
+              <mat-form-field style="width: 205px;">
+                <mat-label>Select Company</mat-label>
+                <mat-select formControlName="comapnycodeB">
+                  <mat-option *ngFor="let excompanyB of excompanies" [value]="excompanyB.code">
+                    {{excompanyB.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+        </mat-grid-tile>
+          <mat-grid-tile colspan=1 rowspan=1>
+            <div class="text-inside-grid">
+              <span class="label">From Period:</span>
+              </div>
+          </mat-grid-tile>
+          <mat-grid-tile colspan=1 rowspan=1>
+              <input matInput [matDatepicker]="startDatepicker" placeholder="From Period" formControlName="fromDate">
+
+              <mat-datepicker-toggle matSuffix
+                                     [for]="startDatepicker">
+
+              </mat-datepicker-toggle>
+
+              <mat-datepicker #startDatepicker></mat-datepicker>
+        </mat-grid-tile>
+        <mat-grid-tile colspan=1 rowspan=1>
+          <div class="text-inside-grid">
+            <span class="label">To Period:</span>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan=1 rowspan=1>
+            <input matInput [matDatepicker]="endDatepicker" placeholder="To Period" formControlName="toDate">
+
+            <mat-datepicker-toggle matSuffix
+                                   [for]="endDatepicker">
+
+            </mat-datepicker-toggle>
+
+            <mat-datepicker #endDatepicker></mat-datepicker>
+      </mat-grid-tile>
             </mat-grid-list>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button [disabled]="loading" [disabled]="!form.valid" mat-raised-button color="primary" (click)=generateMap()>Generrate Map</button>
+          </mat-card-actions>
         </mat-card>
-       <app-company-charts></app-company-charts>
+      </mat-grid-tile>
+      <mat-grid-tile colspan=3 rowspan=1>
+        <div *ngIf="showExCompany; else showexcompany">
+          <mat-spinner class="spinner"></mat-spinner>
+        </div>
+        <ng-template #showexcompany>
+          <app-company-charts *ngIf="seriesData" [seriesdata]="seriesData"></app-company-charts>
+          </ng-template>
+      </mat-grid-tile>
+       </mat-grid-list>
     </div>
