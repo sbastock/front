@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { HttpClient, HttpResponse, HttpRequest,
          HttpEventType, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -18,7 +18,8 @@ import { environment } from '../../environments/environment';
                 animate(300, style({ opacity: 0 }))
           ])
     ])
-]
+],
+encapsulation: ViewEncapsulation.None
 })
 export class FileUploadComponent implements OnInit {
 
@@ -31,9 +32,10 @@ export class FileUploadComponent implements OnInit {
   /** File extension that accepted, same as 'accept' of <input type="file" />. By the default, it's set to 'image/*'. */
   @Input() accept = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
   /** Allow you to add handler after its completion. Bubble up response text from remote. */
+  // tslint:disable-next-line:no-output-native
   @Output() complete = new EventEmitter<string>();
 
-  private files: Array<FileUploadModel> = [];
+  files: Array<FileUploadModel> = [];
 
   constructor(private http: HttpClient) { }
 

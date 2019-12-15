@@ -2,9 +2,9 @@ pipeline {
     agent any
     environment {
 
-	  GIT_URL = "git@github.ibm.com:sba/front.git"
+	  GIT_URL = "git@github.ibm.com:stocksba/front.git"
 		GIT_CRED = "48946d03-31f8-4cee-a4ed-c138e7b900a0"
-		DOCKER_REPO="registry.cn-shanghai.aliyuncs.com/yuanbing/sba-front"
+		DOCKER_REPO="registry.cn-shanghai.aliyuncs.com/yuanbing/stocksba-front"
 		DOCKER_REG="https://registry.cn-shanghai.aliyuncs.com"
 		DOCKER_REG_KEY = "874c3949-6135-41d1-902c-ebd184193ded"
 		dockerImage = ''

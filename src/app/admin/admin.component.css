@@ -30,6 +30,12 @@
   flex: 1 1 auto;
 }
 
+.div-button-spacer {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: -20px;
+}
+
 .action-spacer {
   flex: 1 1 auto;
 }
@@ -58,4 +64,7 @@
   text-align:center;
   width: 600px;
   margin: auto;
+}
+.resultcard {
+  display: block;
 }

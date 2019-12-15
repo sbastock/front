@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +36,16 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { UpdateCompanyComponent } from './update-company/update-company.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
+import { CompanyChartsComponent } from './user/company-compare/company-charts/company-charts.component';
+import { CompanyCompareComponent } from './user/company-compare/company-compare.component';
+import { UserIposComponent } from './user/user-ipos/user-ipos.component';
+import { MatTableModule } from '@angular/material';
+import { SectorCompareComponent } from './user/sector-compare/sector-compare.component';
+import { SectorChartsComponent } from './user/sector-compare/sector-charts/sector-charts.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { AddExchangeComponent } from './add-exchange/add-exchange.component';
+import { UpdateExchangeComponent } from './update-exchange/update-exchange.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +59,14 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     UserComponent,
     UpdateCompanyComponent,
     AddCompanyComponent,
-    FileUploadComponent
+    CompanyChartsComponent,
+    CompanyCompareComponent,
+    UserIposComponent,
+    SectorCompareComponent,
+    SectorChartsComponent,
+    FileUploadComponent,
+    AddExchangeComponent,
+    UpdateExchangeComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +78,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatTableModule,
     MatSidenavModule,
     MatInputModule,
     MatSelectModule,
@@ -74,12 +92,14 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     Ng2SearchPipeModule,
     MatTabsModule,
     MatBadgeModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTooltipModule,
+    NgxEchartsModule,
   ],
   providers: [MatDatepickerModule, DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent],
-  entryComponents: [AddCompanyComponent, UpdateCompanyComponent]
+  entryComponents: [AddCompanyComponent, UpdateCompanyComponent, AddExchangeComponent, UpdateExchangeComponent]
 })
 export class AppModule { }

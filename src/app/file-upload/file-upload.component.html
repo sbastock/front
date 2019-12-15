@@ -1,4 +1,4 @@
-<button mat-button color="primary" (click)="onClick()">
+<button mat-button color="primary" matTooltip="Format: [CompanyCode_Exchange_fromDate_toDate] eg: 500112_BSE_2019-06-08_2019-06-09.xlsx" matTooltipClass="tooltip-red" (click)="onClick()">
     <mat-icon>file_upload</mat-icon>
     {{text}}
 </button>
@@ -16,3 +16,5 @@
     </li>
 </ul>
 <input type="file" id="fileUpload" name="fileUpload" multiple="multiple" accept="{{accept}}" style="display:none;"/>
+
+<a target="_blank" href="../../assets/example/500112_BSE_2019-06-01_2019-12-31.xlsx">Click Here to download sample Excel file</a>

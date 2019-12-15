@@ -1,0 +1,59 @@
+<div class="mat-small">
+        <mat-card class="chart-condition-card">
+            <mat-grid-list cols="3" rowHeight="3:1">
+                <mat-grid-tile>Select Stock Exchange</mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Stock Exchange</mat-label>
+                        <mat-select>
+                            <mat-option value="BSE">BSE</mat-option>
+                            <mat-option value="NSE">NSE</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile>Company Name</mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Company Name</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let company of companies" [value]="company.id">
+                                {{company.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button mat-raised-button color="primary">
+                        <mat-icon aria-hidden="false" aria-label="add_icon">add</mat-icon>
+                    </button>
+                </mat-grid-tile>
+                <mat-grid-tile>Period</mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker1" placeholder="From" [formControl]="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker2" placeholder="To" [formControl]="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>Specify Periodicity</mat-grid-tile>
+                <mat-grid-tile colspan=2>
+                    <button mat-button>Week</button>
+                    <button mat-button>Month</button>
+                    <button mat-button>Quarter</button>
+                    <button mat-button>Year</button>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button mat-raised-button color="primary">Generate Map</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card>
+       <app-company-charts></app-company-charts>
+    </div>

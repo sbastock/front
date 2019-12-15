@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>Update Company</h2>
+
+
+<mat-dialog-content [formGroup]="form">
+    <mat-grid-list cols="2" rowHeight="60px">
+        <mat-grid-tile>
+    <mat-form-field style="width: 405px;">
+
+        <input matInput
+                placeholder="Exchange Name"
+               formControlName="name">
+
+    </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field style="width: 405px;">
+
+          <input matInput
+          placeholder="Brief"
+         formControlName="brief">
+
+      </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field style="width: 405px;">
+
+              <input matInput
+              placeholder="Address"
+             formControlName="address">
+
+          </mat-form-field>
+          </mat-grid-tile>
+
+    <mat-grid-tile>
+    <mat-form-field style="width: 405px;">
+
+        <input matInput
+        placeholder="Remarks"
+       formControlName="remarks">
+
+    </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close
+            (click)="close()">
+        Cancel
+    </button>
+
+    <button [disabled]="loading" [disabled]="!form.valid" mat-button cdkFocusInitial
+            (click)="update()">
+        Update
+    </button>
+
+</mat-dialog-actions>
+
+
+

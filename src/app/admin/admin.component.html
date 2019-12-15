@@ -3,11 +3,76 @@
       <mat-tab label="Import Data">
           <div class="mainupload">
               <app-file-upload (complete)="onFileComplete($event)"></app-file-upload>
+              <div *ngIf="showUploadResult">
+                <mat-card style="margin: 20px;">
+                  <mat-card-header class="resultcard">
+                    <mat-card-title><span class="label">Summary of Upload</span></mat-card-title>
+
+                  </mat-card-header>
+                  <mat-card-content>
+                    <mat-grid-list cols="4" rows="4" rowHeight="30px">
+                        <mat-grid-tile colspan=2 rowspan=1>
+                            <div class="text-inside-grid">
+                          <span class="label">Company Name: </span>
+                          </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile colspan=2 rowspan=1>
+                            <div class="text-inside-grid">
+                          {{uploadRsp.companyname}}
+                          </div>
+                        </mat-grid-tile>
+                              <mat-grid-tile colspan=2 rowspan=1>
+                                  <div class="text-inside-grid">
+                                  <span class="label">Stock Exchange: </span>
+                                  </div>
+                                </mat-grid-tile>
+                              <mat-grid-tile colspan=2 rowspan=1>
+                                  <div class="text-inside-grid">
+                                  {{uploadRsp.stockExchange}}
+                                  </div>
+                                </mat-grid-tile>
+                                <mat-grid-tile colspan=2 rowspan=1>
+                                    <div class="text-inside-grid">
+                                    <span class="label">No.of Records Imported: </span>
+                                    </div>
+                                  </mat-grid-tile>
+                            <mat-grid-tile colspan=2 rowspan=1>
+                                <div class="text-inside-grid">
+                                    {{uploadRsp.records}}
+                                    </div>
+                              </mat-grid-tile>
+                              <mat-grid-tile colspan=1 rowspan=1>
+                                  <div class="text-inside-grid">
+                                  <span class="label">From Date: </span>
+                                  </div>
+                                </mat-grid-tile>
+                          <mat-grid-tile colspan=1 rowspan=1>
+                              <div class="text-inside-grid">
+                                  {{uploadRsp.fromDate | date}}
+                                  </div>
+                            </mat-grid-tile>
+
+                              <mat-grid-tile colspan=1 rowspan=1>
+                                  <div class="text-inside-grid">
+                                  <span class="label">To Date: </span>
+                                  </div>
+                                </mat-grid-tile>
+                          <mat-grid-tile colspan=1 rowspan=1>
+                              <div class="text-inside-grid">
+                                  {{uploadRsp.toDate | date}}
+                                  </div>
+                            </mat-grid-tile>
+                      </mat-grid-list>
+                </mat-card-content>
+                </mat-card>
+              </div>
         </div>
          </mat-tab>
       <mat-tab label="Manage Company">
-
+        <div class="div-button-spacer">
           <button mat-stroked-button (click)="addCompanyDialog()">Create Company</button>
+
+        </div>
           <div *ngIf="showCompany;else showcompany">
               <mat-spinner class="spinner"></mat-spinner>
             </div>
@@ -97,6 +162,58 @@
 
       </mat-tab>
       <mat-tab label="Manage Exchange">
+        <div class="div-button-spacer">
+          <button mat-stroked-button (click)="addExchangeDialog()">Create Exchange</button>
+        </div>
+        <div *ngIf="showExchange;else showexchange">
+            <mat-spinner class="spinner"></mat-spinner>
+          </div>
+
+          <ng-template #showexchange>
+            <mat-grid-list cols="3" rowHeight="2:1">
+              <mat-grid-tile colspan=1 rowspan=1 *ngFor="let exchange of exchanges">
+            <mat-card class="company-card mat-elevation-z10">
+              <mat-card-header>
+                <div mat-card-avatar
+                [ngStyle]="{'background-image': 'url(assets/images/exchange.png)', 'background-size':'cover'}"></div>
+                <mat-card-title><span class="label">Name: </span>{{exchange.name}}</mat-card-title>
+                <mat-card-subtitle><span class="label">Brief: </span>{{exchange.brief}}</mat-card-subtitle>
+                <span class="mat-header-spacer"></span>
+                <div>
+                    <button mat-icon-button color="primary" (click)="updateExchangeDialog(exchange)">
+                        <mat-icon style="font-size: 30px">edit</mat-icon>
+                      </button>
+                    </div>
+              </mat-card-header>
+              <mat-card-content>
+                  <mat-grid-list cols="2" rows="2" rowHeight="30px">
+                      <mat-grid-tile colspan=1 rowspan=1>
+                          <div class="text-inside-grid">
+                        <span class="label">Address: </span>
+                        </div>
+                      </mat-grid-tile>
+                      <mat-grid-tile colspan=1 rowspan=1>
+                          <div class="text-inside-grid">
+                        {{exchange.address}}
+                        </div>
+                      </mat-grid-tile>
+                            <mat-grid-tile colspan=1 rowspan=1>
+                                <div class="text-inside-grid">
+                                <span class="label">Remarks: </span>
+                                </div>
+                              </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="text-inside-grid">
+                                {{exchange.remarks}}
+                                </div>
+                              </mat-grid-tile>
+
+                    </mat-grid-list>
+              </mat-card-content>
+            </mat-card>
+          </mat-grid-tile>
+          </mat-grid-list>
+          </ng-template>
 
          </mat-tab>
          <mat-tab label="Update IPO Details">

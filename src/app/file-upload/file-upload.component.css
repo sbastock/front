@@ -20,3 +20,7 @@ li {
 #file-label a {
       cursor: pointer;
 }
+
+.tooltip-red {
+  background: #b71c1c;
+}
