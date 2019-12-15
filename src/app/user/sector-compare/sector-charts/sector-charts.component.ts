@@ -33,14 +33,14 @@ export class SectorChartsComponent implements OnInit {
     },
     toolbox: {
         feature: {
-            dataView: {show: true, readOnly: false},
+            dataView: {show: false, readOnly: false},
             magicType: {show: true, type: ['line', 'bar']},
-            restore: {show: true},
-            saveAsImage: {show: true}
+            restore: {show: false},
+            saveAsImage: {show: false}
         }
     },
     legend: {
-        data:['蒸发量','降水量'],
+        data:['AliNana','Healthcare'],
          inactiveColor: '#777',
         textStyle: {
             color: '#fff'
@@ -49,7 +49,7 @@ export class SectorChartsComponent implements OnInit {
     xAxis: [
         {
             type: 'category',
-            data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+            data: ['2019/12/04','2019/12/05','2019/12/06','2019/12/07','2019/12/08','2019/12/09','2019/12/10','2019/12/11','2019/12/12','2019/12/13','2019/12/14','2019/12/15'],
             axisPointer: {
                 type: 'shadow'
             },
@@ -59,28 +59,28 @@ export class SectorChartsComponent implements OnInit {
     yAxis: [
         {
             type: 'value',
-            name: '水量',
+            name: 'Price',
             min: 0,
             max: 250,
             interval: 50,
             axisLabel: {
-                formatter: '{value} ml'
+                formatter: '{value} '
             },
             axisLine: { lineStyle: { color: '#8392A5' } }
         }
     ],
     series: [
         {
-            name:'CompanyA',
+            name:'AliNana',
             type:'bar',
-            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+            data:[2.0, 4.9, 7.0, 23.2, 25.6, 10.7, 10.8, 10.2, 19.6, 20.0, 19, 3.3],
             color: '#dd6b66'    ,
             
         },
         {
-            name:'SectorA',
+            name:'Healthcare',
             type:'bar',
-            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+            data:[182, 203, 204.0, 170.4, 245.7, 199.7, 178.6, 202.2, 199.7, 180.8, 150.0, 100.3],
             color: '#759aa0',
         }
     ]

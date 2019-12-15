@@ -25,7 +25,8 @@
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <button mat-raised-button color="primary">
-                        <mat-icon aria-hidden="false" aria-label="add_icon">add</mat-icon>
+                        <mat-icon aria-hidden="false" aria-label="add_icon" >add</mat-icon>
+    
                     </button>
                 </mat-grid-tile>
                 <mat-grid-tile>Period</mat-grid-tile>
@@ -51,7 +52,7 @@
                     <button mat-button>Year</button>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    <button mat-raised-button color="primary">Generate Map</button>
+                    <button mat-raised-button color="primary" (click)="generate_Map()">Generate Map</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </mat-card>

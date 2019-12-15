@@ -3,6 +3,7 @@ import { Company } from '../../models/Company';
 import { CompanyService } from '../../service/company.service';
 import { AlertService } from '../../service/alert.service';
 import { FormControl, FormBuilder, Validators, FormGroup} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-company-compare',
@@ -10,14 +11,18 @@ import { FormControl, FormBuilder, Validators, FormGroup} from '@angular/forms';
   styleUrls: ['./company-compare.component.css']
 })
 export class CompanyCompareComponent implements OnInit {
+  form: FormGroup;
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
   companies: Company[];
 
   constructor( private companyservice: CompanyService,
-               private alertService: AlertService, ) { }
+               private alertService: AlertService,
+                ) {
+                }
 
   ngOnInit() {
+    
     this.getCompany();
   }
 
@@ -41,5 +46,9 @@ export class CompanyCompareComponent implements OnInit {
       error => {
         this.alertService.error(error);
       });
+  }
+
+  generate_Map(){
+
   }
 }

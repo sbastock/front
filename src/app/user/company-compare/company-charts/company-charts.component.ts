@@ -127,7 +127,7 @@ export class CompanyChartsComponent implements OnInit {
 
       backgroundColor: '#21202D',
       legend: {
-        data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
+        data: ['AliNana', 'MA5', 'MA10', 'MA20', 'MA30'],
         inactiveColor: '#777',
         textStyle: {
           color: '#fff'
@@ -187,7 +187,7 @@ export class CompanyChartsComponent implements OnInit {
       series: [
         {
           type: 'candlestick',
-          name: '日K',
+          name: 'AliNana',
           data: data,
           itemStyle: {
             normal: {
